@@ -53,9 +53,9 @@ movespeed = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Get the player's input
-key_right = keyboard_check(ord("D"));
-key_left = -keyboard_check(ord("A"));
+            <string>///Get the player's input
+key_D = keyboard_check(ord("D"));
+key_A = keyboard_check(ord("A"));
 key_jump = keyboard_check_pressed(vk_space);
 
 //React to inputs
@@ -68,7 +68,26 @@ if (place_meeting (x, y+1, obj_Platform))
 vsp = key_jump * -jumpspeed
 }
 
+//Horizontal Collision
+if (place_meeting(x+hsp,y,obj_Platform))
+{
+while (!place_meeting(x+sign(hsp),y,obj_Platform))
+{
+x += sign(hsp);
+}
+hsp = 0;
+}
 x += hsp;
+
+//Vertical Collision
+if (place_meeting(x,y+vsp,obj_Platform))
+{
+while (!place_meeting(x,y+sign(vsp),obj_Platform))
+{
+y += sign(hsp);
+}
+vsp = 0;
+}
 y += vsp;
 </string>
           </argument>
