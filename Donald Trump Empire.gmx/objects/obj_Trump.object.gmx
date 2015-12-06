@@ -60,8 +60,16 @@ key_jump = keyboard_check_pressed(vk_space);
 
 //React to inputs
 move = key_A + key_D;
-hsp = move *movespeed;
-if (vsp &lt; 10) += grav;
+hsp = move * movespeed;
+ if (vsp&lt;10) {  vsp += grav }
+
+if (place_meeting (x, y+1, obj_Platform))
+{
+vsp = key_jump * -jumpspeed
+}
+
+x += hsp;
+y += vsp;
 </string>
           </argument>
         </arguments>
